@@ -2,6 +2,8 @@ import React, { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Login from './Login'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const Signup = () => {
   const [name, setname] = useState();
@@ -14,25 +16,38 @@ const Signup = () => {
 
 
   const handleSignup = async () => {
-    console.log(name, email, password)
-    let result = await fetch("http://localhost:5000/signup", {
-      method: 'post',
-      body: JSON.stringify({ name, email, password }),
-      headers: {
-        'Content-type': 'application/json'
-      },
-    });
-    result = await result.json()
-    console.log(result);
-    localStorage.setItem("user", JSON.stringify(result))
-    navigat('/course')
+   if(!name || !email || !password){
+      toast.error("Please fill all the fields")
+      return;
+    }else if(password.length < 6){
+      toast.error("Password must be at least 6 characters")
+      return;
+    }else if(!email.includes("@")){
+      toast.error("Please enter a valid email")
+      return;
+    }
+    else{
+      console.log(name, email, password)
+      let result = await fetch("http://localhost:5000/signup", {
+        method: 'post',
+        body: JSON.stringify({ name, email, password }),
+        headers: {
+          'Content-type': 'application/json'
+        },
+      });
+      result = await result.json()
+      console.log(result);
+      localStorage.setItem("user", JSON.stringify(result))
+      toast.success("Signup successful")
+      navigat('/course')
+    }
   }
 
   return (
     <>
       <div className=' flex h-screen items-center justify-center'>
 
-        <div className="w-[600px]">
+        <div className="w-[400px]">
           <div className="modal-box">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
@@ -79,6 +94,7 @@ const Signup = () => {
 
 
       </div>
+      <ToastContainer />
     </>
   )
 }

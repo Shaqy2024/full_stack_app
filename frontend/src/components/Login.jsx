@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -22,11 +23,11 @@ const Login = () => {
     console.log(result)
     if (result.name) {
       localStorage.setItem("user", JSON.stringify(result))
-
+toast.success("Login successful")
       navigate('/')
 
     } else {
-      alert("Please Enter valide details")
+      toast.error("Invalid credentials")
     }
   }
 
@@ -69,6 +70,8 @@ const Login = () => {
         </div>
       </dialog>
 
+
+      <ToastContainer />
     </div>
   )
 }

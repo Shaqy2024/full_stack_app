@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Footer = () => {
   const [scrib , setScrib] = useState();
   const scrbBtn = () => {
-    alert(scrib)
-    localStorage.setItem("srb", (scrib))
+  if(!scrib){
+    toast.error("Please enter your email")  
+  }else if(!scrib.includes("@")){
+    toast.error("Please enter a valid email")
+  }else{
+    toast.success("Subscribed successfully")
+  }
   }
   return (
     <div>
@@ -45,9 +51,11 @@ const Footer = () => {
         <button onClick={scrbBtn} className="btn bg-pink-500 join-item">Subscribe</button>
         </Link>
       </div>
+
     </fieldset>
   </form>
 </footer>
+<ToastContainer />
     </div>
   )
 }

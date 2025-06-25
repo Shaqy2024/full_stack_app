@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 
 const Admin = () => {
 
+
+
+
+
+
+
+
+
 const [name , setname] = useState();
 const [prise, setprise] = useState();
 const [img, setimg] = useState();
@@ -36,7 +44,26 @@ if(name,prise,img,discription){
     }
 
 
+
+
+
+    
 }
+
+
+
+
+  const phoneNumber = "7303909682"; 
+  const message = "Hello! I want to chat with you.";
+  const encodedMessage = encodeURIComponent(message);
+
+  const handleClick = () => {
+    const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(url, "_blank");
+  };
+
+
+
   
 
     
@@ -105,6 +132,18 @@ if(name,prise,img,discription){
 
 
    </div>
+
+
+<button
+      onClick={handleClick}
+      className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+    >
+      Chat on WhatsApp
+    </button>
+
+
+
+
    </>
   )
 }

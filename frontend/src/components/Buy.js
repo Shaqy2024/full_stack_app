@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Buy = () => {
 const navigate = useNavigate();
@@ -25,7 +26,7 @@ const navigate = useNavigate();
 
   const handleBtn = () => {
 
-    alert("Thank you for watching This Web site")
+    toast.success("this is a demo website you ,can't by any product")
     navigate('/course')
 
   }

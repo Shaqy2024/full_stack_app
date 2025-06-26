@@ -19,7 +19,7 @@ const WhatsAppButton = () => {
     >
       
       
-     <IoLogoWhatsapp className=" text-5xl  text-pink-500" />
+     <IoLogoWhatsapp className=" text-5xl text-pink-500 hover:text-green-500 duration-700" />
 
 
     </button>

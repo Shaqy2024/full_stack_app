@@ -43,7 +43,7 @@ const getStrt = () =>{
         <img src="Banner.jpg" className='w-92 h-92' alt='banner' />
         </div>
 
-<div className='flex ml-[85%] fixed bottom-10'>
+<div className='flex ml-[85%] fixed bottom-10 '>
 <WhatsAppButton />
 </div>
 

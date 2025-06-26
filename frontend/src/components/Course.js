@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Course = () => {
   const [products, setProducts] = useState ([]);
@@ -13,7 +14,7 @@ setProducts(result)
   }
   console.log(products)
   const buyBtn = () => {
-    alert("Please sellect this book")
+    toast.error("please sellect to buy the product")
   }
   return (
    <>
